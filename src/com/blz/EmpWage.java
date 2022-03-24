@@ -4,19 +4,16 @@ public class EmpWage {
 
     public static final int IS_PRESENT = 1;
     public static final int IS_PART_TIME = 2;
-    public static final int WAGE_PER_HOUR = 20;
-    public static final int NUM_OF_DAYS = 20;
-    public static final int MAX_HRS_IN_MONTH = 150;
 
     public static void main(String[] args) {
-        computeEmpWage();
+        computeEmpWage("RIL",10,10,50);
     }
 
-    public static int computeEmpWage() {
+    public static int computeEmpWage(String name, int empRatePerHr, int numOfDays, int maxHrs) {
         int totalWage;
         int totalEmpHrs = 0;
         int totalDays = 0;
-        while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalDays < NUM_OF_DAYS) {
+        while (totalEmpHrs <= maxHrs && totalDays < numOfDays) {
             totalDays++;
             int random = (int) Math.floor(Math.random() * 10) % 3;
             int empHrs = switch (random) {
@@ -27,8 +24,8 @@ public class EmpWage {
             totalEmpHrs = totalEmpHrs + empHrs;
             System.out.println("Day#: " + totalDays + " Emp Hr: " + empHrs);
         }
-        totalWage = totalEmpHrs * WAGE_PER_HOUR;
-        System.out.println("Total Emp Wage: " + totalWage);
+        totalWage = totalEmpHrs * empRatePerHr;
+        System.out.println("Total Emp Wage for Company: "+name+" is " + totalWage);
         return totalWage;
     }
 }
